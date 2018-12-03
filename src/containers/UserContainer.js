@@ -1,46 +1,52 @@
-import React, { Component } from 'react';
-import { UserList } from '../components';
-import { addItem, generateId } from './Reusables';
+import React from 'react';
+import { updateList , findById } from '../Reusables';
 
-export class UserContainer extends Component {
-	state = {
-		newUser: '',
-		users: [
-			{id: 1, name:'Laura', isActive: true}
-		],
-		errorMessage: ''
+import '../styles.css';
+
+class UsersContainer extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			newUser: {},
+			inputText: ''
+		};
 	}
 
-	addNewUser(e) {
-		// Check if id already exists 
-		e.preventDefault()
-		const newId = generateId()
-		const newUser = {id:newId, name: this.state.newUser, isActive: true}
-		const updatedList = addItem(this.state.users, newUser)
-		this.setState({
-			users: updatedList,
-			newUser: '',
-			errorMessage: ''
-		})
-	}
+	handleKeyPress = (e) => {
+		if (e.keyCode === 13) {
+			const newId = this.props.generateId();
+			const newUser = {id:newId, name: e.target.value, isActive: true}
+
+			this.props.updateState(state => ({
+				users: [...state.users, newUser]
+			}));
+
+			this.setState({newUser: newUser, inputText: ''});
+		}
+	};
 
 	handleInputChange = (e) => {
 		this.setState({
-			newUser: e.target.value
+			inputText: e.target.value
 		})
+	}
+
+	handleUserChange = (e) => {
+		const users = this.props.getState();
+		const userId = parseInt(e.target.value);
+		const user = findById(userId, users);
+		const updatedUser = ({...user, isActive: !user.isActive});
+		const updatedList = updateList(users, updatedUser);
+
+		this.props.updateState(state => ({
+			users: [...updatedList]
+		}));
 	}
 	render() {
 		return (
-			<div>
-				<form onSubmit={this.addNewUser.bind(this)}>
-					<label>
-						New User
-						<input type="text" value={this.state.newUser} onChange={this.handleInputChange.bind(this)} />
-					</label>
-					<input type="submit" value="Add User" />
-				</form>
-				<UserList users={this.state.users} />
-			</div>
+			<Users />
 		)
 	}
 }
+
+export default UsersContainer;
