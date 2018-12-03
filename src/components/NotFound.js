@@ -2,6 +2,6 @@ import React, { Component} from 'react';
 
 export default class NotFound extends Component {
 	render() {
-		return <div>NotFound</div>
+		return <div>404... Wrong Page</div>
 	}
 }

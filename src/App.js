@@ -34,6 +34,7 @@ import './styles.css';
               <Route path="/users/:name" component={User}/>
               <Route exact path="/groups" component={Groups}/>
               <Route path="/groups/create" component={CreateGroups}/>
+              <Route path="/groups/:id" component={Group} />
               <Route path="*" component={NotFound}/>
             </Switch>
            </div>
