@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { addItem, addItems, getById, removeItem, getDiffs, updateList } from '../Reusables';
+import {Link} from 'react-router';
+import './styles.css';
 
 class Groups extends Component {
 	constructor(props) {
@@ -96,11 +98,19 @@ class Groups extends Component {
 				groups: updateList(this.state.groups, selectedGroups[0])
 			}))
 		}
+	}
+
+	editGroup = (group) => {
+		debugger;
+		console.log('Edit Group', group)
+	}
+
+	deleteGroup = (group) => console.log('Delete Group', group);
 	
 
 	render() {
-		const {showUsers} = this.props.getState('configuration')
-		const {groups, users} = this.props.getState()
+		const {groups, users, configuration} = this.props.getState()
+		const {showUsers} = configuration
 		return (
 			<div className="Groups">
 				<h1>Groups</h1>
@@ -113,7 +123,17 @@ class Groups extends Component {
 				<ul>
 					{groups.map((group, i) => 
 						<li key={i}>
-							<input type="checkbox" onChange={this.selectGroup} value={group.id} />{group.name}
+							<input type="checkbox" onChange={this.selectGroup} value={group.id} />
+							<label>
+								{group.name}
+							</label>
+
+							<ButtonIcon
+								className="remove-button"
+								icon='fa-pencil-square-o'
+								onClick={() => {this.editGroup(group)}}
+								type='secondary'
+								
 							{showUsers
 							? <div>
 									<ul>
