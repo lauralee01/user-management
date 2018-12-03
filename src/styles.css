@@ -1,3 +1,9 @@
 .isInactive{
 	text-decoration: line-through;
 }
+button {
+	cursor: pointer;
+}
+button:focus, input:focus{
+	outline: none;
+}

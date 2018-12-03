@@ -1,14 +1,15 @@
 import React from 'react';
-import { updateList , findById } from '../Reusables';
+import { updateList , getById } from '../Reusables';
+import {Users} from '../views';
 
-import '../styles.css';
 
 class UsersContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			newUser: {},
-			inputText: ''
+			inputText: '',
+			users: props.route.users
 		};
 	}
 
@@ -33,8 +34,8 @@ class UsersContainer extends Component {
 
 	handleUserChange = (e) => {
 		const users = this.props.getState();
-		const userId = parseInt(e.target.value);
-		const user = findById(userId, users);
+		const userId = parseInt(e.target.value, 10);
+		const user = getById(users, userId);
 		const updatedUser = ({...user, isActive: !user.isActive});
 		const updatedList = updateList(users, updatedUser);
 
@@ -44,7 +45,13 @@ class UsersContainer extends Component {
 	}
 	render() {
 		return (
-			<Users />
+			<Users 
+			onKeyPress={this.handleKeyPress}
+			onInputChange={this.handleInputChange}
+			onUserChange={this.handleUserChange}
+			users={this.state.users}
+			inputValue={this.state.inputValue}
+			/>
 		)
 	}
 }

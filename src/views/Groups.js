@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addItem, addItems, getById, removeItem, getDiffs } from '../Reusables';
+import { addItem, addItems, getById, removeItem, getDiffs, updateList } from '../Reusables';
 
 class Groups extends Component {
 	constructor(props) {
@@ -72,28 +72,35 @@ class Groups extends Component {
 	}
 
 	addUsers = () => {
-		let usersToAdd,
-			userSelectedIds = [];
+		let addUsers,
+			usersSelectedIds = [];
 
-		const users = this.state.selectedUsers;
-		const groups =[...this.state.selectedGroups] ;
+		const selectedUsers = this.state.selectedUsers;
+		const selectedGroups = [...this.state.selectedGroups];
 
-		userSelectedIds = users.map(user => user.id).concat()
+		usersSelectedIds = selectedUsers.map(user => user.id).concat()
 
-		groups.map(group => {
-			usersToAdd = getDiffs(userSelectedIds, group.users)
-			console.log(group.users);
-			group.users = addItems(group.users, usersToAdd)
+		selectedGroups.map(group => {
+			debugger;
+			addUsers = getDiffs(usersSelectedIds, groups.users)
+			const usersGroup = addItems(groups.users, addUsers)
+			group.users = usersGroup;
 		})
 
-		this.props.updateState(state => ({
-			groups: [...groups]
-		}));
-	}
+		if(selectedGroups.length > 1) {
+			this.props.updateState(state => ({
+				groups: [...selectedGroups]
+			}));
+		} else {
+			this.props.updateState(state => ({
+				groups: updateList(this.state.groups, selectedGroups[0])
+			}))
+		}
+	
 
 	render() {
-		const {showUsers} = this.props.getState('configuration');
-		const {groups, users} = this.props.getState();
+		const {showUsers} = this.props.getState('configuration')
+		const {groups, users} = this.props.getState()
 		return (
 			<div className="Groups">
 				<h1>Groups</h1>
@@ -105,7 +112,7 @@ class Groups extends Component {
 
 				<ul>
 					{groups.map((group, i) => 
-						<li key={group.id}>
+						<li key={i}>
 							<input type="checkbox" onChange={this.selectGroup} value={group.id} />{group.name}
 							{showUsers
 							? <div>
@@ -141,7 +148,8 @@ class Groups extends Component {
 								Add Users
 							</button>
 						</div>
-						: null}
+						: null
+					}
 					</div>
 
 		);
