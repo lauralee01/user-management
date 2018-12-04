@@ -7,8 +7,7 @@ import './styles.css'
 
 class Groups extends React.Component {
 	render(){
-		const {users} = this.props;
-		let countUsersByGroup = 0;
+		const {users, groups} = this.props;
 		let showDeleteButton = true;
 		return (
 			<div>

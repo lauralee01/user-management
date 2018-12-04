@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import {editGroup} from '../actions/groups';
 import './styles.css';
 
@@ -48,11 +47,11 @@ class Group extends React.Component{
 				editedGroup: {
 					...state.editedGroup,
 					id: +groupId
-				},
-				showMessage: !this.state.showMessage
+				}
 			}), () => {
 				this.props.editGroup(idx, this.state.editedGroup)
 				this.handleCleanEditedGroup();
+				this.props.history.push('/groups')
 			})
 		} 
 	}
@@ -60,10 +59,6 @@ class Group extends React.Component{
 		const group = this.getGroup(this.props.match.params.id)
 		const {editedGroup} = this.state;
 	return(
-		<div>
-			{ group
-				?
-			(
 			<div>
 				<h2>Group: {group.name}</h2>
 				<label>Name: {group.name} </label>
@@ -81,13 +76,8 @@ class Group extends React.Component{
 			
 		</div>
 	)
-	: <Redirect to={{
-		pathname:'/groups'
-	}}/>
+	
 	}
-	</div>
-	)
-}
 }
 
 const mapStateToProps = state => ({

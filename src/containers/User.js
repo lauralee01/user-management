@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Redirect} from 'react-router-dom';
 import './styles.css';
 import {editUser} from '../actions/users';
 
@@ -8,10 +7,7 @@ class User extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			editedUser: {
-				name: '',
-				groups: []
-			}
+			user: this.props.user
 		}
 	}
 	getUser = name => {
@@ -23,15 +19,15 @@ class User extends React.Component {
 		const {value} = e.target;
 		this.setState(state => ({
 			...state,
-			editedUser: {
-				...state.editedUser,
+			user: {
+				...state.user,
 				name: value
 			}
 		}))
 	}
 
 	isGroupAssigned = group => {
-		const {groups} = this.state.editedUser;
+		const {groups} = this.state.user;
 		return groups.indexOf(group) !== -1;
 	}
 	handleGroupChange=(e, group) => {
@@ -43,14 +39,14 @@ class User extends React.Component {
 		}
 	}
 	handleRemoveGroupFromUser = (group = '') => {
-		const {groups} = this.state.editedUser;
+		const {groups} = this.state.user;
 		const idx = groups.indexOf(group)
 
 		if(idx !== -1) {
 			this.setState(state => ({
 				...state,
-				editedUser: {
-					...state.editedUser
+				user: {
+					...state.user
 				},
 				groups:{
 					...groups.slice(0, idx),
@@ -63,9 +59,9 @@ class User extends React.Component {
 	handleAddGroupToUser = (group = '') => {
 		this.setState(state => ({
 			...state,
-			editedUser: {
-				...state.editedUser,
-				groups: [...state.editedUser.groups, group]
+			user: {
+				...state.user,
+				groups: [...state.user.groups, group]
 			}
 		}))
 	}
@@ -83,22 +79,19 @@ class User extends React.Component {
 		const user = this.getUser(userName)[0];
 		const idx = this.props.users.indexOf(user);
 		this.props.editUser(idx, editedUser)
+		this.handleCleanEditedUser();
 	}
 	render() {
-		const userName = this.props.match.params.name;
-		const user = this.getUser(userName)[0];
-		const {groups} = this.props;
-		const {editedUser} = this.state;
+		const {user, groups} = this.props
 		return (
 			<div>
 				{
-					user ? (
 						<div>
 						<h1>User: {user.name}</h1>
 						<label>Name: {user.name}</label>
-							<div>
+							<div style={{marginTop: 20}}>
 								<label>Groups Assigned</label>
-							<ul>
+								<ul className="ul-bulleted">
 								{user.groups && user.groups.map((group, i) => (
 									<li key={i}>
 										<label>
@@ -112,7 +105,7 @@ class User extends React.Component {
 						<div>
 							<h3>Update with values:</h3>
 							<label>New name: </label>
-							<input type="text" onChange={this.handleChangeUserInput} value={editedUser.name}/>
+							<input type="text" onChange={this.handleChangeUserInput} value={this.state.user.name}/>
 							<div>
 								<h4>Assign Groups: </h4>
 									<table>
@@ -142,25 +135,28 @@ class User extends React.Component {
 									</table>
 									</div>
 									<div className="button-container">
-										<button style={{padding: 8}} onClick={() => this.editUser(editedUser)} >
+										<button style={{padding: 8}} onClick={() => this.editUser} >
 											Save
 										</button>
 									</div>
 								</div>
 							</div>
-						) : <Redirect to={{
-							pathname: '/users'
-					}}/>
 				}
 			</div>
 		)
 	}
 }
 
-const mapStateToProps = state => ({
-	users: state.users,
-	groups: state.groups
-})
+const getUser = (name, users) => {
+	return users.filter(user => user.name === name)
+}
+const mapStateToProps = (state, ownProps) => {
+	return {
+		users: state.users,
+		user:getUser(ownProps.match.params.name, state.users)[0],
+		groups: state.groups
+	}
+}
 const mapDispatchToProps = dispatch => ({
 	editUser: (idx, editedUser) => dispatch(editUser(idx, editedUser))
 })

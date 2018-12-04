@@ -6,26 +6,53 @@ class CreateGroups extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			newGroup: ''
+			newGroup: {
+				id: '',
+				name: ''
+			}
 		};
 	}
 
 	handleChangeGroupInput = (e) => {
 		const {value} = e.target;
-		this.setState({
-			newGroup: value
-		});
+		this.setState(state => ({
+			...state,
+			newGroup: {
+				...state.newGroup,
+				name: value
+			}
+		}))
 	}
 
 	handleCleanNewGroup = () => {
 		this.setState({
-			newGroup: ''
+			newGroup: {
+				id: '',
+				name: ''
+			}
 		})
 	}
 
-	handleAddGroup(group) {
-		this.props.addGroup(group);
-		this.handleCleanNewGroup();
+	addGroup(group) {
+		if (group.name) {
+			let getLastId = 1;
+			const {groups} = this.props;
+			if(groups.length) {
+				getLastId = (groups[groups.length - 1].id)+1;
+			}
+		this.setState(state => ({
+			...state,
+			newGroup: {
+				...state.newGroup,
+				id: getLastId,
+				name: group.name
+			}
+		}), () => {
+			this.props.addGroup(this.state.newGroup);
+			this.handleCleanNewGroup();
+			this.props.history.push('/groups');
+		})
+		}
 	}
 
 	render() {
@@ -35,9 +62,10 @@ class CreateGroups extends Component {
 				<h2>Add Group</h2>
 				<label>
 					Group Name:
-					<input type="text" value={newGroup} onChange={this.handleChangeGroupInput}/>
 				</label>
-				<button onClick={() => this.handleAddGroup(newGroup)}>
+					<input type="text" value={newGroup.name} onChange={this.handleChangeGroupInput}/>
+				
+				<button onClick={() => this.addGroup(newGroup)}>
 					Add Group
 				</button>
 			</section>
@@ -45,7 +73,9 @@ class CreateGroups extends Component {
 	}
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+	groups: state.groups
+})
 const mapDispatchToProps = dispatch => ({
 	addGroup: group => dispatch(addGroup(group))
 })

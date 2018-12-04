@@ -78,9 +78,11 @@ class CreateUsers extends Component {
 		})
 	}
 
-	handleAddUser(newUser) {
+	addUser(newUser) {
+		if(newUser.name !== '')
 		this.props.addUser(newUser);
 		this.handleCleanNewUser();
+		this.props.history.push('/users')
 	}
 
 	render () {
@@ -100,7 +102,7 @@ class CreateUsers extends Component {
 									<th>Name</th>
 									<th>Assign</th>
 								</tr>
-								{this.props.groups.map((group, i) => (
+								{groups.map((group, i) => (
 									<tr key={i}>
 										<td>
 											{group.name}
