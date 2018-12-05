@@ -35,9 +35,9 @@ class Group extends React.Component{
 		})
 	}
 
-	handleEditGroup(editedGroup) {
+	editGroup(editedGroup) {
 		const groupId = this.props.match.params.id;
-		const group = this.getGroup(groupId)
+		const group = this.handleGetGroup(groupId)
 		const {groups} = this.props;
 		const idx = groups.indexOf(group);
 
@@ -56,7 +56,7 @@ class Group extends React.Component{
 		} 
 	}
 	render() {
-		const group = this.getGroup(this.props.match.params.id)
+		const group = this.handleGetGroup(this.props.match.params.id)
 		const {editedGroup} = this.state;
 	return(
 			<div>
@@ -64,12 +64,12 @@ class Group extends React.Component{
 				<label>Name: {group.name} </label>
 				<hr />
 				<div>
-					<h3>Update with value</h3>
+					<h3>Update with value: </h3>
 					<label>New name: </label>
-					<input type="text" onChange={this.handleChangeGroupInput} value={this.state.editedGroup.name} />
+					<input type="text" onChange={this.handleChangeGroupInput} value={editedGroup.name} />
 			</div>
 			<div className="button-container">
-				<button style={{padding: 8}} onClick={() =>this.editGroup(this.state.editedGroup)}>
+				<button style={{padding: 8}} onClick={() =>this.editGroup(editedGroup)}>
 					Save
 				</button>
 			</div>
@@ -84,7 +84,7 @@ const mapStateToProps = state => ({
 	groups: state.groups
 })
 const mapDispatchToProps = dispatch => ({
-	editGroup: (idx, editedGroup) => dispatch(editedGroup(idx, editedGroup))
+	editGroup: (idx, editedGroup) => dispatch(editGroup(idx, editedGroup))
 })
 
 export default connect(

@@ -30,6 +30,11 @@ class User extends React.Component {
 		const {groups} = this.state.user;
 		return groups.indexOf(group) !== -1;
 	}
+
+	doesUserHaveGroup = group => {
+		const {groups} = this.state.user;
+		return !!groups.filter(g => g.id === group.id).length
+	}
 	handleGroupChange=(e, group) => {
 		const {checked} = e.target;
 		if(checked) {
@@ -40,18 +45,18 @@ class User extends React.Component {
 	}
 	handleRemoveGroupFromUser = (group = '') => {
 		const {groups} = this.state.user;
-		const idx = groups.indexOf(group)
+		const idx = groups.indexOf(groups.find(grp => grp.id === group.id))
 
 		if(idx !== -1) {
 			this.setState(state => ({
 				...state,
 				user: {
-					...state.user
-				},
-				groups:{
-					...groups.slice(0, idx),
-					...groups.slice(idx + 1)
-				}
+					...state.user,
+					groups:[
+						...groups.slice(0, idx),
+						...groups.slice(idx + 1)
+					]
+				}	
 			}))
 		}
 	}
@@ -66,27 +71,19 @@ class User extends React.Component {
 		}))
 	}
 
-	handleCleanEditedUser = () => {
-		this.setState({
-			editedUser: {
-				name: '',
-				groups: []
-			}
-		})
-	}
-	handleEditUser(editedUser) {
-		const userName = this.props.match.params.name;
-		const user = this.getUser(userName)[0];
-		const idx = this.props.users.indexOf(user);
-		this.props.editUser(idx, editedUser)
-		this.handleCleanEditedUser();
+	editUser = () => {
+		if (this.state.user.name !== '') {
+			const idx = this.props.users.indexOf(this.props.user);
+			this.props.editUser(idx, this.state.user);
+			this.props.history.push('/users')
+		}
 	}
 	render() {
 		const {user, groups} = this.props
 		return (
 			<div>
 				{
-						<div>
+					<div>
 						<h1>User: {user.name}</h1>
 						<label>Name: {user.name}</label>
 							<div style={{marginTop: 20}}>
@@ -95,7 +92,7 @@ class User extends React.Component {
 								{user.groups && user.groups.map((group, i) => (
 									<li key={i}>
 										<label>
-											{group.name}
+											{groups.find(grp => grp.id === group.id).name}
 										</label>
 									</li>
 								))}
@@ -108,24 +105,26 @@ class User extends React.Component {
 							<input type="text" onChange={this.handleChangeUserInput} value={this.state.user.name}/>
 							<div>
 								<h4>Assign Groups: </h4>
-									<table>
-										<tbody>
-											<tr>
-												<th>Group</th>
-												<th>Assign</th>
-											</tr>
-												{groups.map((group, i) => (
-													<tr key={i}>
-													<td>
-														<label>
-															{group.name}
-														</label>
-													</td>
-													<td>
+									{groups.length > 0
+										?
+										<table>
+											<tbody>
+												<tr>
+													<th>Group</th>
+													<th>Assign</th>
+												</tr>
+													{groups.map((group, i) => (
+														<tr key={i}>
+														<td>
+															<label>
+																{group.name}
+															</label>
+														</td>
+														<td>
 														<input 
 															type="checkbox"
 															onChange={e => this.handleGroupChange(e, group)}
-															onChecked={this.isGroupAssigned(group)}
+															defaultChecked={this.doesUserHaveGroup(group)}
 														/>
 													</td>
 													</tr>
@@ -133,9 +132,11 @@ class User extends React.Component {
 												))}
 										</tbody>
 									</table>
+									: <div><p>Sorry... currently there are no groups to assign</p></div>
+								}
 									</div>
 									<div className="button-container">
-										<button style={{padding: 8}} onClick={() => this.editUser} >
+										<button style={{padding: 8}} onClick={this.editUser} >
 											Save
 										</button>
 									</div>
@@ -163,5 +164,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
 	mapStateToProps,
-	null
+	mapDispatchToProps
 )(User)

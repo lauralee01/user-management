@@ -8,10 +8,11 @@ ul {
 	padding: 0;
 }
 .remove-button {
+	color: red;
 	height: 25px;
 	width: 25px;
 	border-radius: 3px;
-	background: transparent;
+	background-color: yellow;
 	border: none;
 	font-size: 26px;
 	outline: none;

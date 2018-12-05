@@ -37,9 +37,12 @@ class Users extends React.Component {
 							</td>
 							<td>
 								<Link to={`/users/${user.name}`}>
-									<Button className={'remove-button'} icon={'fa-pencil-square-o'} />
+									Edit
 								</Link>
-								<Button className={'remove-button'} icon={'trash-o'} onClick={() => this.props.removeUser(user)} />
+								
+								<a href="#" style={{margin: 8}} onClick={() => this.props.removeUser(user)}>
+									Delete
+								</a>
 							</td>
 						</tr>
 					))}
