@@ -36,11 +36,11 @@ class Users extends React.Component {
 								</ul>
 							</td>
 							<td>
-								<Link to={`/users/${user.name}`}>
+								<Link to={`/users/${user.name}`} class="user-edit">
 									Edit
 								</Link>
 								
-								<a href="#" style={{margin: 8}} onClick={() => this.props.removeUser(user)}>
+								<a href="#" class="user-delete" style={{margin: 8}} onClick={() => this.props.removeUser(user)}>
 									Delete
 								</a>
 							</td>

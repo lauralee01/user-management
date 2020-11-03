@@ -1,17 +1,9 @@
 body {
 	background-color: rgb(240,240,240);
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Rubik', sans-serif;
 	margin: 0 auto;
 }
 
-aside {
-	color: white;
-	float: left;
-	margin-right: 15%;
-	background: transparent;
-	border-right: 5px solid gray;
-	height: 500px;
-}
 h1,h2,h3,h4,h5 {
 	font-family: 'Lato', sans-serif
 }
@@ -25,20 +17,34 @@ ul.menu {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	display: flex;
 }
-input {
-	background-color: rgba(255,165,0,0.4);
-}
+
 #content {
 	display: inline-block;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 12px rgba(30, 51, 101, 0.12);
+	border-radius: 4px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 50px;
+}
+.user-header {
+	color: gray;
+	text-align: center;
+}
+.user-info {
+	color: gray;
+	text-align: center;
 }
 #container {
-	width: 80%;
-	background-color: rgba(255,165,0, 0.4);
-	margin: 40px auto;
-	height: 100vh;
-	padding: 45px 80px;
-	box-sizing: border-box;
+	position: relative;
+	background-image: url("/img/Login.png");
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
 }
 
 @media (max-width: 800px) {
@@ -47,21 +53,52 @@ input {
 	}
 }
 .vertical-menu {
-	width: 200px;
 	height: 100%;
 	overflow-y: auto;
+	justify-content: center;
+    background: white;
 }
 .vertical-menu a{
-	color: black;
+	
+
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+text-align: center;
+
+color: gray;
 	display: block;
 	padding: 12px;
 	text-decoration: none;
 }
 .vertical-menu a:hover {
 	background-color: #ccc;
+	color: #fff;
 }
 .vertical-menu a.active {
 	background-color: #4CAf50;
 	color: white;
 }
-
+.user-edit {
+	text-decoration: none;
+    background: darkgray;
+    padding: 3px 15px;
+    color: white;
+}
+.user-delete {
+	text-decoration: none;
+    background: rgb(158, 9, 9);
+    padding: 3px 15px;
+    color: white;
+}
+.user-input {
+	width: 70%;
+	height: 20px;
+}
+.create-btn {
+	background: brown;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 4px;
+}

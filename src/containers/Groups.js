@@ -26,9 +26,9 @@ class Groups extends React.Component {
 									{group.name}
 								</td>
 								<td>
-									<Link to={`/groups/${group.id}`}>Edit</Link>
+									<Link to={`/groups/${group.id}`} class="user-edit">Edit</Link>
 									
-									<a href="#" style={{margin: 8}} onClick={() => this.props.removeGroup(group)}>
+									<a href="#" class="user-delete" style={{margin: 8}} onClick={() => this.props.removeGroup(group)}>
 										Delete
 									</a>
 								</td>

@@ -63,9 +63,9 @@ class CreateGroups extends Component {
 				<label>
 					Group Name:
 				</label>
-					<input type="text" value={newGroup.name} onChange={this.handleChangeGroupInput}/>
+					<input type="text" value={newGroup.name} onChange={this.handleChangeGroupInput} />
 				
-				<button onClick={() => this.addGroup(newGroup)}>
+				<button onClick={() => this.addGroup(newGroup)} class="create-btn">
 					Add Group
 				</button>
 			</section>

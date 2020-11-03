@@ -1,0 +1,31 @@
+<svg width="1440" height="212" viewBox="0 0 1440 212" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.5">
+<rect y="32" width="24" height="24" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(1 0 0 -1 0 182)" fill="white" fill-opacity="0.08"/>
+<rect y="64" width="24" height="24" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(1 0 0 -1 0 152)" fill="white" fill-opacity="0.08"/>
+<rect y="96" width="24" height="24" fill="white" fill-opacity="0.08"/>
+<rect x="32" y="64" width="24" height="24" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(1 0 0 -1 32 152)" fill="white" fill-opacity="0.08"/>
+<rect x="32" y="96" width="24" height="24" fill="white" fill-opacity="0.08"/>
+<rect x="64" y="96" width="24" height="24" fill="white" fill-opacity="0.08"/>
+</g>
+<g opacity="0.5">
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1440 0)" fill="white" fill-opacity="0.08"/>
+<rect x="1440" y="212" width="24" height="24" transform="rotate(180 1440 212)" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1440 32)" fill="white" fill-opacity="0.08"/>
+<rect x="1440" y="182" width="24" height="24" transform="rotate(180 1440 182)" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1440 64)" fill="white" fill-opacity="0.08"/>
+<rect x="1440" y="152" width="24" height="24" transform="rotate(180 1440 152)" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1440 96)" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1408 32)" fill="white" fill-opacity="0.08"/>
+<rect x="1408" y="182" width="24" height="24" transform="rotate(180 1408 182)" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1408 64)" fill="white" fill-opacity="0.08"/>
+<rect x="1408" y="152" width="24" height="24" transform="rotate(180 1408 152)" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1408 96)" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1376 64)" fill="white" fill-opacity="0.08"/>
+<rect x="1376" y="152" width="24" height="24" transform="rotate(180 1376 152)" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1376 96)" fill="white" fill-opacity="0.08"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1344 96)" fill="white" fill-opacity="0.08"/>
+</g>
+</svg>

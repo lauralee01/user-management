@@ -94,7 +94,7 @@ class CreateUsers extends Component {
 				<h2>Add User</h2>
 				<label>
 					Name:
-					<input type="text" value={newUser.name} onChange={this.handleChangeUserInput} />
+					<input type="text" value={newUser.name} onChange={this.handleChangeUserInput} class="user-input"/>
 					<h3>Assign Groups </h3>
 						<table>
 							<tbody>
@@ -117,7 +117,7 @@ class CreateUsers extends Component {
 							</tbody>
 						</table>
 						<div className='button-container'>
-						<Button label={'Add User'} onClick={() => this.addUser(newUser)} />
+						<Button label={'Add User'} onClick={() => this.addUser(newUser)} className="create-btn" />
 					</div>
 					</label>
 				</section>

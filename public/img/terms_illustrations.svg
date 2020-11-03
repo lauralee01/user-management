@@ -1,0 +1,34 @@
+<svg width="1440" height="412" viewBox="0 0 1440 412" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="24" height="24" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(1 0 0 -1 0 212)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect y="32" width="24" height="24" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(1 0 0 -1 0 182)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect y="64" width="24" height="24" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(1 0 0 -1 0 152)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect y="96" width="24" height="24" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="32" y="32" width="24" height="24" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(1 0 0 -1 32 182)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="32" y="64" width="24" height="24" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(1 0 0 -1 32 152)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="32" y="96" width="24" height="24" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="64" y="64" width="24" height="24" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(1 0 0 -1 64 152)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="64" y="96" width="24" height="24" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="96" y="96" width="24" height="24" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="1440" y="412" width="24" height="24" transform="rotate(-180 1440 412)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1440 200)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="1440" y="380" width="24" height="24" transform="rotate(-180 1440 380)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1440 230)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="1440" y="348" width="24" height="24" transform="rotate(-180 1440 348)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1440 260)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="1440" y="316" width="24" height="24" transform="rotate(-180 1440 316)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="1408" y="380" width="24" height="24" transform="rotate(-180 1408 380)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1408 230)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="1408" y="348" width="24" height="24" transform="rotate(-180 1408 348)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1408 260)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="1408" y="316" width="24" height="24" transform="rotate(-180 1408 316)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="1376" y="348" width="24" height="24" transform="rotate(-180 1376 348)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect width="24" height="24" transform="matrix(-1 0 0 1 1376 260)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="1376" y="316" width="24" height="24" transform="rotate(-180 1376 316)" fill="#2CBC40" fill-opacity="0.14"/>
+<rect x="1344" y="316" width="24" height="24" transform="rotate(-180 1344 316)" fill="#2CBC40" fill-opacity="0.14"/>
+</svg>

@@ -136,7 +136,7 @@ class User extends React.Component {
 								}
 									</div>
 									<div className="button-container">
-										<button style={{padding: 8}} onClick={this.editUser} >
+										<button style={{padding: 8}} onClick={this.editUser} class="create-btn" >
 											Save
 										</button>
 									</div>

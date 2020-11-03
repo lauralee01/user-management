@@ -17,7 +17,7 @@ import './styles.css';
       return (
         <BrowserRouter>
          <div id="container">
-          <aside>
+          <nav>
             <ul className="menu vertical-menu">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/users">Users</Link></li>
@@ -25,7 +25,7 @@ import './styles.css';
               <li><Link to="/groups">Groups</Link></li>
               <li><Link to="/groups/create">Create Groups</Link></li>
             </ul>
-          </aside>
+          </nav>
            <div id="content">
             <Switch>
               <Route exact path="/" component={Home}/>

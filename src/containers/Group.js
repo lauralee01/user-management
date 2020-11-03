@@ -69,7 +69,7 @@ class Group extends React.Component{
 					<input type="text" onChange={this.handleChangeGroupInput} value={editedGroup.name} />
 			</div>
 			<div className="button-container">
-				<button style={{padding: 8}} onClick={() =>this.editGroup(editedGroup)}>
+				<button style={{padding: 8}} onClick={() =>this.editGroup(editedGroup)} class="create-btn">
 					Save
 				</button>
 			</div>
